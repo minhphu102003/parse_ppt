@@ -25,3 +25,4 @@ uv.lock
 
 # generated output
 output/
+*.json

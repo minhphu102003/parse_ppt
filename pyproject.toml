@@ -16,7 +16,15 @@ dependencies = [
 
 [project.scripts]
 parseppt = "app.main:app"
+json-to-md = "app.tools.json_to_md:main"
 
 [tool.uv]
 dev-dependencies = []
+package = true
 
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["app"]
