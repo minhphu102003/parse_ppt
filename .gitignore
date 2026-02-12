@@ -23,3 +23,5 @@ Thumbs.db
 .uv/
 uv.lock
 
+# generated output
+output/

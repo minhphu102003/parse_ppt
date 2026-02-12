@@ -34,9 +34,28 @@ Open Swagger UI: http://127.0.0.1:8000/docs
 
 ## API
 
-- POST `/convert`
-  - Form field: `file` (PPT or PPTX)
-  - Response: zip file containing generated Markdown (`.md`) and assets (images)
+- POST `/convert` (pptx2md mặc định)
+  - Form field: `file` (PPT hoặc PPTX)
+  - Trả về: tệp zip chứa `.md` và ảnh
+
+- POST `/convert/pptx2md`
+  - Backend: ssine/pptx2md (CLI)
+
+- POST `/convert/markitdown`
+  - Backend: Microsoft MarkItDown (Python)
+  - Cài thêm: `uv add markitdown`
+
+- POST `/convert/pandoc`
+  - Backend: Pandoc (CLI)
+  - Yêu cầu cài pandoc trong hệ thống
+
+- POST `/convert/pptx_to_md`
+  - Backend: `pptx_to_md` (nếu có)
+  - Cần cài đúng lib/CLI tương ứng
+
+- POST `/convert/aspose`
+  - Backend: Aspose.Slides for Python (via .NET)
+  - Yêu cầu cài đặt + license hợp lệ
 
 Example with `curl`:
 
@@ -45,6 +64,12 @@ curl -X POST \
   -F "file=@slides.pptx" \
   -o conversion.zip \
   http://127.0.0.1:8000/convert
+
+# Thử backend khác (vd MarkItDown)
+curl -X POST \
+  -F "file=@slides.pptx" \
+  -o conversion_markitdown.zip \
+  http://127.0.0.1:8000/convert/markitdown
 ```
 
 ## Notes
